@@ -1,19 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import CarDetail from './components/CarDetail';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Landing from './pages/Landing';
 import CarForm from './components/CarForm';
-import './App.css'
+import Dashboard from './components/Dashboard';
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <Route exact path="/" component={Dashboard} />
-      <Route exact path="/car/:id" component={CarDetail} />
-      <Route exact path="/car/:id/edit" component={CarForm} />
-      <Route exact path="/car/create" component={CarForm} />
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route path="/create" component={CarForm} />
+        <Route path="/car/add" component={CarForm} />
+        <Route path="/dashboard" component={Dashboard} />
+      </Switch>
     </Router>
   );
-};
+}
 
 export default App;
